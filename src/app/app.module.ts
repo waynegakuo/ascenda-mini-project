@@ -11,12 +11,14 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { HotelCardComponent } from './shared/components/hotel-card/hotel-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    HotelCardComponent
   ],
     imports: [
         BrowserModule,
