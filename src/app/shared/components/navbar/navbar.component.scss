@@ -1,0 +1,143 @@
+@import "../../../../assets/custom-styles/colors";
+
+
+mat-icon {
+  cursor: pointer;
+  color: $primary;
+  font-size: 2em;
+}
+
+mat-menu {
+  > button:focus {
+    outline: none;
+  }
+}
+
+.nav-bar {
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  overflow: hidden;
+
+  img {
+    width: 150px;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .home-link {
+    text-decoration: none;
+    color: $primary;
+    margin: 0;
+    // text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1em;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .burger:focus {
+    outline: none;
+  }
+
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.1rem;
+    align-content: flex-end;
+    justify-content: flex-end;
+
+    li {
+      margin: 0 10px;
+    }
+
+    li a,
+    .register {
+      text-decoration: none;
+      color: $primary;
+      font-weight: bold;
+      position: relative;
+    }
+    li a::after {
+      content: "";
+      background-color: $primary;
+      position: absolute;
+      left: 0;
+      bottom: -18px;
+      height: 2px;
+      width: 100%;
+      opacity: 0;
+      transition: transform 0.2s ease;
+    }
+
+    li .nav_link:hover::after {
+      transform: translateY(-15px);
+      opacity: 1;
+    }
+    li > .button {
+      color: white;
+    }
+
+    .active ~ span {
+      display: flex;
+      border-bottom: 2px solid $primary;
+      z-index: 1;
+    }
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .button.outline {
+    padding: 11px 20px !important;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: $primary;
+  }
+}
+
+/* responsiveness */
+@media screen and (max-width: 480px) {
+  .nav-bar {
+    width: 100%;
+    flex-direction: row;
+
+    .burger {
+      display: block;
+    }
+  }
+
+  nav > ul {
+    float: right;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    transform: translateX(120%);
+    transition: transform 0.4s ease;
+  }
+
+  nav ul.show {
+    transform: translateX(0);
+  }
+
+  nav ul li {
+    margin: 15px;
+  }
+}
