@@ -1,0 +1,31 @@
+<section class="py-5">
+
+  <div class="flex justify-center content-center relative flex-col">
+    <img src="assets/images/banners/landing_banner.png">
+
+    <div class="absolute landing-header-title w-auto">
+      <p class="font-bold text-5xl text-white">Enjoy Your Dream Vacation</p>
+
+      <p class="font-normal text-xl text-white mt-4">No matter where you're going from, we take you there.</p>
+
+    </div>
+
+    <section class="bg-[#F2FFFA] h-52 absolute bottom-0 filter-menu-section left-36 rounded-2xl w-96">
+      <div class="flex flex-row ml-2.5 p-12">
+
+        <form class="w-full md:w-32">
+          <div class="flex flex-col">
+            <label class="font-semibold text-xl mb-2">Currency</label>
+            <select class="form-control-dropdown form-control-select-arrow">
+              <option *ngFor="let currency of currencies" [value]="currency.value">{{currency.name}}</option>
+            </select>
+          </div>
+        </form>
+
+
+
+      </div>
+    </section>
+  </div>
+
+</section>

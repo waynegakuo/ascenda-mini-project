@@ -1,0 +1,35 @@
+@import "../../../assets/custom-styles/colors";
+
+.landing-page-banner {
+  background: url("../../../assets/images/banners/landing_banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.landing-header-title {
+  left: 10%;
+  top: 10%;
+}
+
+.filter-menu-section {
+  //width: px;
+  top: 70%;
+}
+
+.form-control-dropdown {
+  @apply w-full h-12 box-border rounded-xl px-4
+  outline-none mb-3 font-normal not-italic text-lg flex
+  items-center tracking-wider;
+  border: 1px solid $primary-grey;
+  color: $input-text-color;
+}
+
+.form-control-select-arrow {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url('/assets/svg-icons/icon-chevron-down.svg');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 13px);
+}
