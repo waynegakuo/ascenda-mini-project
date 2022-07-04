@@ -1,13 +1,14 @@
 <div class="bg-[#F8F8F7] shadow-xl rounded-lg overflow-hidden w-96 m-2">
   <div class="bg-cover h-48 w-full card-img"
+       [style.background]="'url('+hotel.photo+')'"
        [style.backgroundSize]="'cover'" [style.backgroundRepeat]="'no-repeat'">
   </div>
   <div class="flex flex-col pt-2 p-5">
     <div class="mt-3">
-      <div class="font-bold text-xl">Hotel Name</div>
+      <div class="font-bold text-xl">{{hotel.name}}</div>
       <div class="flex flex-col">
         <p class="font-bold text-gray-600">Price</p>
-        <p class="text-xs font-bold text-gray-400 mt-2">Rating</p>
+        <p class="text-xs font-bold text-gray-400 mt-2">{{hotel.rating}}, No. of stars {{hotel.stars}}</p>
       </div>
       <div class="flex flex-row justify-between">
         <div class="flex items-center flex-row mt-2 text-gray-400 text-sm">

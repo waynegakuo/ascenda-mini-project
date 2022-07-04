@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Currency } from "../../models/currency.model";
+import {HotelService} from "../../services/hotel/hotel.service";
+import {Hotel} from "../../models/hotel.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-landing-page',
@@ -7,6 +10,9 @@ import { Currency } from "../../models/currency.model";
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
+
+  hotels$: Observable<Hotel[]> = this.hotelService.getHotels();
+  // hotels$!: Observable<Hotel[]>;
 
   currencies: Currency[] = [
     {
@@ -26,7 +32,7 @@ export class LandingPageComponent implements OnInit {
       value: 'KRW',
     }
   ];
-  constructor() { }
+  constructor(private hotelService: HotelService) { }
 
   ngOnInit(): void {
   }

@@ -25,8 +25,23 @@
     </section>
   </div>
 
-  <section class="mt-16">
-    <app-hotel-card></app-hotel-card>
-  </section>
+  <ng-container *ngIf="hotels$ | async as hotels; else loading">
+    <ng-container *ngIf="hotels.length > 0">
+      <section class="mt-16">
+        <div class="flex flex-row flex-wrap justify-center">
+          <ng-container *ngFor="let hotel of hotels">
+            <app-hotel-card [hotel]="hotel"></app-hotel-card>
+          </ng-container>
+        </div>
+      </section>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="flex justify-center mt-14">
+      <img src="assets/images/loaders/loading.gif" class="w-1/4" />
+    </div>
+  </ng-template>
+
 
 </section>

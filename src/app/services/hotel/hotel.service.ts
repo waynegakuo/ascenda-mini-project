@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Hotel} from "../../models/hotel.model";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HotelService {
+
+  hotelsApiUrl = 'https://5df9cc6ce9f79e0014b6b3dc.mockapi.io/hotels/tokyo';
+
+  constructor(private http: HttpClient) { }
+
+  getHotels(): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(this.hotelsApiUrl);
+  }
+}
