@@ -12,7 +12,7 @@ export class PriceService {
 
   constructor(private http: HttpClient) { }
 
-  getPrice(currency: string): Observable<Price[]> {
+  getPrice(currency: string | null): Observable<Price[]> {
     return this.http.get<Price[]>(this.priceApiUrl + currency);
   }
 }

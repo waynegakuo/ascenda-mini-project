@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Hotel} from "../../../models/hotel.model";
+import {Price} from "../../../models/price.model";
 
 @Component({
   selector: 'app-hotel-card',
@@ -9,6 +10,8 @@ import {Hotel} from "../../../models/hotel.model";
 export class HotelCardComponent implements OnInit {
 
   @Input() hotel!: Hotel
+  @Input() price!: Price
+  @Input() symbol!: string;
 
   constructor() { }
 

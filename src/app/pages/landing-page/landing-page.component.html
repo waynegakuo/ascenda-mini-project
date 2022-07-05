@@ -30,15 +30,17 @@
     </section>
   </div>
 
-  <ng-container *ngIf="hotels$ | async as hotels; else loading">
-    <ng-container *ngIf="hotels.length > 0">
-      <section class="mt-16">
-        <div class="flex flex-row flex-wrap justify-center">
-          <ng-container *ngFor="let hotel of hotels">
-            <app-hotel-card [hotel]="hotel"></app-hotel-card>
-          </ng-container>
-        </div>
-      </section>
+  <ng-container *ngIf=" {prices: prices$ | async, hotels: hotels$ | async} as priceHotel; else loading">
+    <ng-container *ngIf="priceHotel.hotels; else loading">
+      <ng-container *ngIf="priceHotel.prices; else loading">
+        <section class="mt-16">
+          <div class="flex flex-row flex-wrap justify-center">
+            <ng-container *ngFor="let hotel of priceHotel.hotels; let i = index">
+              <app-hotel-card [symbol]="currencySymbol" [price]="priceHotel.prices[i]" [hotel]="hotel"></app-hotel-card>
+            </ng-container>
+          </div>
+        </section>
+      </ng-container>
     </ng-container>
   </ng-container>
 

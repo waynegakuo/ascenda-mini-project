@@ -1,68 +1,80 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Currency } from "../../models/currency.model";
 import {HotelService} from "../../services/hotel/hotel.service";
 import {Hotel} from "../../models/hotel.model";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, map, Observable, switchMap, take} from "rxjs";
 import {AbstractControl, FormBuilder, ValidationErrors, Validators} from "@angular/forms";
 import {PriceService} from "../../services/price/price.service";
+import {Price} from "../../models/price.model";
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent implements OnInit, OnDestroy {
   currencies: Currency[] = [
     {
       name: 'USD',
       value: 'USD',
-      isSelected: true,
+      symbol: '$'
     },
     {
       name: 'SGD',
       value: 'SGD',
-      isSelected: false,
+      symbol: 'S$'
     },
     {
       name: 'CNY',
       value: 'CNY',
-      isSelected: false,
+      symbol: '¥'
     },
     {
       name: 'KRW',
       value: 'KRW',
-      isSelected: false,
+      symbol: '₩'
     }
   ];
+
   hotels$: Observable<Hotel[]> = this.hotelService.getHotels();
-  // hotels$!: Observable<Hotel[]>;
 
-  prices: any;
+  prices$!: Observable<Price[]>;
 
+  filteredCurrency!: Currency[];
+  currencySymbol!: string;
+
+  // Default Currency is USD
   currencyForm = this.fb.group({
-    currency: ['', Validators.required]
+    currency: ['USD', Validators.required]
   })
 
-  currencyValue$: BehaviorSubject<any> = new BehaviorSubject<{currency: string | null}>
+  // Default Currency Value
+  currencyValue$: BehaviorSubject<{currency: string | null}> = new BehaviorSubject<{currency: string | null}>
   ({currency: 'USD'});
 
   constructor(private hotelService: HotelService, private fb: FormBuilder, private priceService: PriceService) { }
+
   ngOnInit(): void {
-    // console.log('check currency value', this.currencyValue$.value);
-
-    // this.prices = this.priceService.getPrice(this.currencyValue$.value['currency']);
-    //
-    // this.prices.subscribe( (x: any) => {
-    //   console.log(x)
-    // })
-
+    this.prices$ = this.priceService.getPrice(this.currencyValue$.value['currency']);
+    this._updateCurrencySymbol(this.currencyValue$.value['currency']);
   }
 
   onCurrencyOptionSelected(currencyValue: Event){
     this.currencyValue$.next({currency: (currencyValue.target as HTMLInputElement).value});
-    // console.log('check currency value', this.currencyValue$.value['currency']);
+    this.prices$ = this.priceService.getPrice(this.currencyValue$.value['currency']);
+    this._updateCurrencySymbol(this.currencyValue$.value['currency']);
+  }
 
-    // Trigger the change of price and reload the hotel items with the new details
+  private _updateCurrencySymbol(currencySelected: string | null): string {
+    this.filteredCurrency = this.currencies
+      .filter(selectedCurrency => currencySelected === selectedCurrency.value);
+    this.currencySymbol = this.filteredCurrency[0].symbol
+    return this.currencySymbol;
+  }
+
+  ngOnDestroy() {
+    this.currencyValue$.next({currency: null});
+    this.currencyValue$.complete();
   }
 
 }
