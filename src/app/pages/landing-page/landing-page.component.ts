@@ -50,7 +50,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   // Default Currency Value
   currencyValue$: BehaviorSubject<{currency: string | null}> = new BehaviorSubject<{currency: string | null}>
-  ({currency: 'USD'});
+  ({currency: this.currencyForm.controls.currency.value});
 
   constructor(private hotelService: HotelService, private fb: FormBuilder, private priceService: PriceService) { }
 
