@@ -13,11 +13,16 @@
     <section class="bg-[#F2FFFA] h-52 absolute bottom-0 filter-menu-section left-36 rounded-2xl w-96">
       <div class="flex flex-row ml-2.5 p-12">
 
-        <form class="w-full md:w-32">
+        <form class="w-full md:w-96" [formGroup]="currencyForm">
           <div class="flex flex-col">
             <label class="font-semibold text-xl mb-2">Currency</label>
-            <select class="form-control-dropdown form-control-select-arrow">
-              <option *ngFor="let currency of currencies" [value]="currency.value">{{currency.name}}</option>
+            <select class="form-control-dropdown form-control-select-arrow"
+                    (change)="onCurrencyOptionSelected($event)"
+                    formControlName="currency">
+              <option *ngFor="let currency of currencies"
+                      [value]="currency.value">
+                {{currency.name}}
+              </option>
             </select>
           </div>
         </form>
@@ -39,7 +44,7 @@
 
   <ng-template #loading>
     <div class="flex justify-center mt-14">
-      <img src="assets/images/loaders/loading.gif" class="w-1/4" />
+      <img src="assets/images/loaders/loading.gif" class="w-1/4"/>
     </div>
   </ng-template>
 
