@@ -1,3 +1,28 @@
+.hotel-card {
+  width: 700px;
+  //height: 200px;
+}
+
 .card-img {
-  background: url("../../../../assets/images/banners/landing_banner.png");
+  width: 226px;
+  min-width: 226px;
+}
+
+.hotel-details {
+  width: 324px;
+  min-width: 324px;
+}
+
+.ellipsis-55 {
+  max-width: 55px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ellipsis-300 {
+  max-width:300px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

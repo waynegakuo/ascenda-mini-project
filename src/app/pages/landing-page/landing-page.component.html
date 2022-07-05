@@ -1,16 +1,20 @@
 <section class="py-5">
 
-  <div class="flex justify-center content-center relative flex-col">
+  <div class="flex justify-center content-center relative">
     <img src="assets/images/banners/landing_banner.png">
 
-    <div class="absolute landing-header-title w-auto">
+    <div class="absolute landing-header-title w-auto text-center">
       <p class="font-bold text-5xl text-white">Enjoy Your Dream Vacation</p>
 
       <p class="font-normal text-xl text-white mt-4">No matter where you're going from, we take you there.</p>
 
     </div>
 
-    <section class="bg-[#F2FFFA] h-52 absolute bottom-0 filter-menu-section left-36 rounded-2xl w-96">
+  </div>
+
+  <div class="container mx-auto my-auto flex flex-col lg:flex-row
+              justify-center content-center mt-8 items-center lg:items-start">
+    <section class="bg-[#F2FFFA] h-52  bottom-0 filter-menu-section left-36 rounded-2xl w-96">
       <div class="flex flex-row ml-2.5 p-12">
 
         <form class="w-full md:w-96" [formGroup]="currencyForm">
@@ -28,27 +32,28 @@
         </form>
       </div>
     </section>
-  </div>
 
-  <ng-container *ngIf=" {prices: prices$ | async, hotels: hotels$ | async} as priceHotel; else loading">
-    <ng-container *ngIf="priceHotel.hotels; else loading">
-      <ng-container *ngIf="priceHotel.prices; else loading">
-        <section class="mt-16">
-          <div class="flex flex-row flex-wrap justify-center">
-            <ng-container *ngFor="let hotel of priceHotel.hotels; let i = index">
-              <app-hotel-card [symbol]="currencySymbol" [price]="priceHotel.prices[i]" [hotel]="hotel"></app-hotel-card>
-            </ng-container>
-          </div>
-        </section>
+    <ng-container *ngIf=" {prices: prices$ | async, hotels: hotels$ | async} as priceHotel; else loading">
+      <ng-container *ngIf="priceHotel.hotels; else loading">
+        <ng-container *ngIf="priceHotel.prices; else loading">
+          <section>
+            <div class="flex flex-col flex-wrap justify-center">
+              <ng-container *ngFor="let hotel of priceHotel.hotels; let i = index">
+                <app-hotel-card [symbol]="currencySymbol" [price]="priceHotel.prices[i]"
+                                [hotel]="hotel"></app-hotel-card>
+              </ng-container>
+            </div>
+          </section>
+        </ng-container>
       </ng-container>
     </ng-container>
-  </ng-container>
 
-  <ng-template #loading>
-    <div class="flex justify-center mt-14">
-      <img src="assets/images/loaders/loading.gif" class="w-1/4"/>
-    </div>
-  </ng-template>
+    <ng-template #loading>
+      <div class="flex justify-center mt-14">
+        <img src="assets/images/loaders/loading.gif" class="w-1/4"/>
+      </div>
+    </ng-template>
 
+  </div>
 
 </section>

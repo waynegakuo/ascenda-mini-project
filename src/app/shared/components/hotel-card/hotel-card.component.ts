@@ -8,6 +8,7 @@ import {Price} from "../../../models/price.model";
   styleUrls: ['./hotel-card.component.scss']
 })
 export class HotelCardComponent implements OnInit {
+  panelOpenState = false;
 
   @Input() hotel!: Hotel
   @Input() price!: Price

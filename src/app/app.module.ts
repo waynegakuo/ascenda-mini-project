@@ -13,6 +13,7 @@ import {LandingPageComponent} from './pages/landing-page/landing-page.component'
 import {ReactiveFormsModule} from "@angular/forms";
 import {HotelCardComponent} from './shared/components/hotel-card/hotel-card.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatMenuModule,
     MatIconModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,3 +3,10 @@ export interface Price {
   price: number;
   competitors?: {}
 }
+
+interface Competitors <T> {
+  data: {
+    type: string;
+    attributes: T;
+  }
+}
