@@ -15,6 +15,7 @@ import {HotelCardComponent} from './shared/components/hotel-card/hotel-card.comp
 import {HttpClientModule} from "@angular/common/http";
 import {MatExpansionModule} from "@angular/material/expansion";
 import { GhostHotelCardComponent } from './shared/ghost-components/ghost-hotel-card/ghost-hotel-card.component';
+import {PriceEvaluationPipe} from "./pipes/price-evaluation.pipe";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GhostHotelCardComponent } from './shared/ghost-components/ghost-hotel-c
     NavbarComponent,
     LandingPageComponent,
     HotelCardComponent,
-    GhostHotelCardComponent
+    GhostHotelCardComponent,
+    PriceEvaluationPipe
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,8 @@ export class HotelCardComponent implements OnInit {
   @Input() price!: Price
   @Input() symbol!: string;
 
+  @Input() currencyValue!: string;
+
   constructor() { }
 
   ngOnInit(): void {

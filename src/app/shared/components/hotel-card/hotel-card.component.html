@@ -35,7 +35,7 @@
 
                 <div class="flex flex-row">
                   <span *ngIf="price.id === hotel.id" class="text-xs font-semibold">{{symbol}}</span>
-                  <span class="text-xs font-semibold">{{competitor.value}}</span>
+                  <span class="text-xs font-semibold">{{competitor.value | priceEvaluation: currencyValue | number}}</span>
                 </div>
 
               </div>
@@ -46,7 +46,9 @@
                 <span class="text-xs font-semibold ellipsis-300">Us</span>
                 <div class="flex flex-row">
                   <span *ngIf="hotel.id === price.id" class="text-xs font-semibold">{{symbol}}</span>
-                  <span class="text-xs font-semibold">{{price.id === hotel.id ? price.price : 'Rates unavailable'}}</span>
+                  <span class="text-xs font-semibold">
+                    {{price.id === hotel.id ? (price.price| priceEvaluation: currencyValue | number) : 'Rates unavailable'}}
+                  </span>
                 </div>
               </div>
             </div>
@@ -63,9 +65,9 @@
     <div class="text-3xl text-center bg-[#222A5C] text-white font-semibold rounded-t rounded-br w-1/2 mb-12 p-1">
       {{hotel.rating}}
     </div>
-    <div class="flex flex-row text-gray-500 text-2xl mb-4">
+    <div class="flex flex-row text-gray-500 text-xl mb-4">
       <span *ngIf="price.id === hotel.id" class="font-semibold mr-0.5">{{symbol}}</span>
-      <p class="font-bold">{{price.id === hotel.id ? price.price : 'Rates unavailable'}}</p>
+      <p class="font-bold">{{price.id === hotel.id ? (price.price | priceEvaluation: currencyValue | number) : 'Rates unavailable'}}</p>
     </div>
     <a class="text-lg text-center cursor-pointer bg-[#222A5C] rounded px-4 py-1 text-white font-semibold">
       View Hotel</a>

@@ -39,7 +39,7 @@
           <section>
             <div class="flex flex-col flex-wrap justify-center">
               <ng-container *ngFor="let hotel of priceHotel.hotels; let i = index">
-                <app-hotel-card [symbol]="currencySymbol" [price]="priceHotel.prices[i]"
+                <app-hotel-card [currencyValue]="currencyValue" [symbol]="currencySymbol" [price]="priceHotel.prices[i]"
                                 [hotel]="hotel"></app-hotel-card>
               </ng-container>
             </div>

@@ -43,6 +43,8 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   filteredCurrency!: Currency[];
   currencySymbol!: string;
 
+  currencyValue!: string
+
   // Default Currency is USD
   currencyForm = this.fb.group({
     currency: ['USD', Validators.required]
@@ -57,19 +59,26 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.prices$ = this.priceService.getPrice(this.currencyValue$.value['currency']);
     this._updateCurrencySymbol(this.currencyValue$.value['currency']);
+    this._updateCurrencyValue(this.currencyValue$.value['currency']);
   }
 
   onCurrencyOptionSelected(currencyValue: Event){
     this.currencyValue$.next({currency: (currencyValue.target as HTMLInputElement).value});
     this.prices$ = this.priceService.getPrice(this.currencyValue$.value['currency']);
     this._updateCurrencySymbol(this.currencyValue$.value['currency']);
+    this._updateCurrencyValue(this.currencyValue$.value['currency']);
   }
 
   private _updateCurrencySymbol(currencySelected: string | null): string {
     this.filteredCurrency = this.currencies
       .filter(selectedCurrency => currencySelected === selectedCurrency.value);
-    this.currencySymbol = this.filteredCurrency[0].symbol
+    this.currencySymbol = this.filteredCurrency[0].symbol;
     return this.currencySymbol;
+  }
+
+  private _updateCurrencyValue(currencyValueSelected: string | null) {
+    this.currencyValue = String(currencyValueSelected)
+    return this.currencyValue;
   }
 
   ngOnDestroy() {
