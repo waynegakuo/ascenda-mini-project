@@ -14,13 +14,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HotelCardComponent} from './shared/components/hotel-card/hotel-card.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatExpansionModule} from "@angular/material/expansion";
+import { GhostHotelCardComponent } from './shared/ghost-components/ghost-hotel-card/ghost-hotel-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LandingPageComponent,
-    HotelCardComponent
+    HotelCardComponent,
+    GhostHotelCardComponent
   ],
   imports: [
     BrowserModule,

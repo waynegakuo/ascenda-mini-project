@@ -49,8 +49,10 @@
     </ng-container>
 
     <ng-template #loading>
-      <div class="flex justify-center mt-14">
-        <img src="assets/images/loaders/loading.gif" class="w-1/4"/>
+      <div class="flex flex-col flex-wrap justify-center">
+        <ng-container *ngFor="let i of [1,2,3,4,5,6]">
+          <app-ghost-hotel-card></app-ghost-hotel-card>
+        </ng-container>
       </div>
     </ng-template>
 

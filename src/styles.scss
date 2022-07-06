@@ -15,3 +15,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #FCFFFF;
 }
+
+/* Keyframes */
+@keyframes shine {
+  to {
+    background-position: 100% 0;
+  }
+}

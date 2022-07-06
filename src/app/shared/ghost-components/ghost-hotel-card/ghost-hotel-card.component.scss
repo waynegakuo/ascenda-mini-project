@@ -1,0 +1,77 @@
+$bg-ghost-gradient: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 80%
+), #d5d5d5;
+
+.ghost-hotel-card {
+  width: 700px;
+  height: 220px;
+}
+
+.ghost-hotel-card-image {
+  width: 226px;
+  min-width: 226px;
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ghost-hotel-name {
+  width: 200px;
+}
+
+.ghost-hotel-address {
+  width: 150px;
+}
+
+.ghost-hotel-card-rating {
+  width: 70px;
+  height: 50px;
+  margin-bottom: 48px;
+}
+
+.ghost-hotel-card-price {
+  width: 100px;
+  height: 32px;
+}
+
+.ghost-hotel-card-competitors-section{
+  width: 285px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.ghost-hotel-name,
+.ghost-hotel-address{
+  height: 20px;
+}
+
+.ghost-hotel-name,
+.ghost-hotel-address{
+  margin: 10px 0;
+}
+
+.ghost-hotel-name,
+.ghost-hotel-address,
+.ghost-hotel-card-rating,
+.ghost-hotel-card-price,
+.ghost-hotel-card-button{
+  max-width: 200px;
+  border-radius: 3px;
+}
+
+.ghost-hotel-card-image,
+.ghost-hotel-name,
+.ghost-hotel-address,
+.ghost-hotel-card-rating,
+.ghost-hotel-card-price,
+.ghost-hotel-card-button,
+.ghost-hotel-card-competitors-section{
+  background: $bg-ghost-gradient;
+  background-repeat: repeat-y;
+  background-size: 100px 500px;
+  background-position: 0 0;
+  animation: shine 1.3s infinite;
+}
