@@ -33,9 +33,9 @@
       </div>
     </section>
 
-    <ng-container *ngIf=" {prices: prices$ | async, hotels: hotels$ | async} as priceHotel; else loading">
-      <ng-container *ngIf="priceHotel.hotels; else loading">
-        <ng-container *ngIf="priceHotel.prices; else loading">
+    <ng-container *ngIf=" {prices: prices$ | async, hotels: hotels$ | async} as priceHotel">
+      <ng-container *ngIf="priceHotel.hotels && priceHotel.prices; else loading">
+        <ng-container *ngIf="priceHotel.hotels.length > 0 && priceHotel.prices.length > 0; else noHotels">
           <section>
             <div class="flex flex-col flex-wrap justify-center">
               <ng-container *ngFor="let hotel of priceHotel.hotels; let i = index">
@@ -45,17 +45,26 @@
             </div>
           </section>
         </ng-container>
+
+        <ng-template #noHotels>
+          <div class="flex flex-col flex-wrap content-center justify-center p-12 no-hotels-section">
+            <img src="assets/images/404/not_found.svg" class="w-1/2 self-center">
+
+            <p class="text-gray-500 font-bold text-xl text-center mt-8">Sorry, no hotel matching your search details</p>
+          </div>
+        </ng-template>
+
       </ng-container>
+
+      <ng-template #loading>
+        <div class="flex flex-col flex-wrap justify-center">
+          <ng-container *ngFor="let i of [1,2,3,4,5,6]">
+            <app-ghost-hotel-card></app-ghost-hotel-card>
+          </ng-container>
+        </div>
+      </ng-template>
+
     </ng-container>
-
-    <ng-template #loading>
-      <div class="flex flex-col flex-wrap justify-center">
-        <ng-container *ngFor="let i of [1,2,3,4,5,6]">
-          <app-ghost-hotel-card></app-ghost-hotel-card>
-        </ng-container>
-      </div>
-    </ng-template>
-
   </div>
 
 </section>
