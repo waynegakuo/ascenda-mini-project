@@ -29,17 +29,27 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ng-container *ngFor="let item of price.competitors | keyvalue ">
+            <ng-container *ngFor="let competitor of price.competitors | keyvalue ">
               <div class="flex flex-row justify-between text-center mr-2">
-                <span class="text-xs font-semibold ellipsis-300">{{item.key}}</span>
+                <span class="text-xs font-semibold ellipsis-300">{{competitor.key}}</span>
 
                 <div class="flex flex-row">
                   <span *ngIf="price.id === hotel.id" class="text-xs font-semibold">{{symbol}}</span>
-                  <span class="text-xs font-semibold">{{item.value}}</span>
+                  <span class="text-xs font-semibold">{{competitor.value}}</span>
                 </div>
 
               </div>
             </ng-container>
+
+            <div class="border-t-2 mt-2">
+              <div class="flex flex-row justify-between text-center my-0.5 text-blue-500">
+                <span class="text-xs font-semibold ellipsis-300">Us</span>
+                <div class="flex flex-row">
+                  <span *ngIf="hotel.id === price.id" class="text-xs font-semibold">{{symbol}}</span>
+                  <span class="text-xs font-semibold">{{price.id === hotel.id ? price.price : 'Rates unavailable'}}</span>
+                </div>
+              </div>
+            </div>
 
           </mat-expansion-panel>
         </mat-accordion>
