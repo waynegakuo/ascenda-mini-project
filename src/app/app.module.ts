@@ -17,6 +17,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import { GhostHotelCardComponent } from './shared/ghost-components/ghost-hotel-card/ghost-hotel-card.component';
 import {PriceEvaluationPipe} from "./pipes/price-evaluation.pipe";
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {SavingsPercentagePipe} from "./pipes/savings-percentage.pipe";
+import { CustomTooltipComponent } from './shared/components/custom-tooltip/custom-tooltip.component';
+import {CustomTooltipDirective} from "./directives/custom-tooltip.directive";
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     LandingPageComponent,
     HotelCardComponent,
     GhostHotelCardComponent,
-    PriceEvaluationPipe
+    PriceEvaluationPipe,
+    SavingsPercentagePipe,
+    CustomTooltipComponent,
+    CustomTooltipDirective
   ],
   imports: [
     BrowserModule,
