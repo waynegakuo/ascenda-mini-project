@@ -35,7 +35,8 @@
 
                 <div class="flex flex-row">
                   <span *ngIf="price.id === hotel.id" class="text-xs font-semibold">{{symbol}}</span>
-                  <span class="text-xs font-semibold">{{competitor.value | priceEvaluation: currencyValue | number}}</span>
+                  <span
+                    class="text-xs font-semibold">{{competitor.value | priceEvaluation: currencyValue | number}}</span>
                 </div>
 
               </div>
@@ -65,10 +66,38 @@
     <div class="text-3xl text-center bg-[#222A5C] text-white font-semibold rounded-t rounded-br w-1/2 mb-12 p-1">
       {{hotel.rating}}
     </div>
-    <div class="flex flex-row text-gray-500 text-xl mb-4">
+    <div class="flex flex-row text-gray-500 text-xl mb-3">
       <span *ngIf="price.id === hotel.id" class="font-semibold mr-0.5">{{symbol}}</span>
-      <p class="font-bold">{{price.id === hotel.id ? (price.price | priceEvaluation: currencyValue | number) : 'Rates unavailable'}}</p>
+      <p
+        class="font-bold">{{price.id === hotel.id ? (price.price | priceEvaluation: currencyValue | number) : 'Rates unavailable'}}</p>
+
+
+      <img *ngIf="price.taxes_and_fees && price.id === hotel.id" src="assets/svg-icons/icon-info.svg"
+           class="self-baseline info-tooltip ml-0.5"
+           matTooltip="Inclusive of Tax and Fees"
+           [matTooltipPosition]="'right'"
+           matTooltipHideDelay="3000"
+           aria-label="Icon that displays a tooltip"/>
+
     </div>
+
+    <ng-container *ngIf="price.taxes_and_fees !== null && price.id === hotel.id ">
+      <div class="mb-1">
+        <ng-container *ngFor="let taxes of price.taxes_and_fees | keyvalue">
+          <div class="flex flex-row justify-between text-center mr-2 text-green-600 italic">
+          <span class="text-xs ellipsis-300">
+            {{taxes.key === 'hotel_fees' ? 'Hotel Fees' : (taxes.key === 'tax' ? 'Tax' : '')}}
+          </span>
+
+            <div class="flex flex-row">
+              <span *ngIf="price.id === hotel.id" class="text-xs">{{symbol}}</span>
+              <span class="text-xs">{{taxes.value | priceEvaluation: currencyValue | number}}</span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
     <a class="text-lg text-center cursor-pointer bg-[#222A5C] rounded px-4 py-1 text-white font-semibold">
       View Hotel</a>
   </div>

@@ -16,6 +16,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatExpansionModule} from "@angular/material/expansion";
 import { GhostHotelCardComponent } from './shared/ghost-components/ghost-hotel-card/ghost-hotel-card.component';
 import {PriceEvaluationPipe} from "./pipes/price-evaluation.pipe";
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {PriceEvaluationPipe} from "./pipes/price-evaluation.pipe";
     MatIconModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
