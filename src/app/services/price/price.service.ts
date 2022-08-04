@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {Price} from "../../models/price.model";
 import {HttpClient} from "@angular/common/http";
 
@@ -13,7 +13,12 @@ export class PriceService {
   constructor(private http: HttpClient) { }
 
   getPrice(currency: string | null): Observable<Price[]> {
-    return this.http.get<Price[]>(this.priceApiUrl + currency);
+    return this.http.get<Price[]>(this.priceApiUrl + currency)
+      .pipe(
+        catchError(() => {
+          return throwError(() => 'Hotels with selected currency cannot be found');
+        })
+      );
   }
 }
 
