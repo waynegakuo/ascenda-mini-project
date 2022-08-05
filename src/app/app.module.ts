@@ -20,6 +20,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {SavingsPercentagePipe} from "./pipes/savings-percentage.pipe";
 import { CustomTooltipComponent } from './shared/components/custom-tooltip/custom-tooltip.component';
 import {CustomTooltipDirective} from "./directives/custom-tooltip.directive";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import {getAnalytics, provideAnalytics} from "@angular/fire/analytics";
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import {CustomTooltipDirective} from "./directives/custom-tooltip.directive";
     ReactiveFormsModule,
     HttpClientModule,
     MatExpansionModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    provideAnalytics(() => getAnalytics())
   ],
   providers: [],
   bootstrap: [AppComponent]

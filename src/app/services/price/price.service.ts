@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class PriceService {
 
-  priceApiUrl = 'http://5df9cc6ce9f79e0014b6b3dc.mockapi.io/hotels/tokyo/1/'
+  priceApiUrl = 'https://5df9cc6ce9f79e0014b6b3dc.mockapi.io/hotels/tokyo/1/'
 
   constructor(private http: HttpClient) { }
 
