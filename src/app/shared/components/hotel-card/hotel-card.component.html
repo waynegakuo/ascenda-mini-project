@@ -1,4 +1,4 @@
-<div class="bg-[#F8F8F7] shadow-xl rounded-lg overflow-hidden m-2 flex flex-row hotel-card">
+<div *ngIf="hotel && price" class="bg-[#F8F8F7] shadow-xl rounded-lg overflow-hidden m-2 flex flex-row hotel-card">
   <div class="bg-cover h-100 card-img"
        [style.background]="'url('+hotel.photo+')'"
        [style.backgroundSize]="'cover'" [style.backgroundRepeat]="'no-repeat'">

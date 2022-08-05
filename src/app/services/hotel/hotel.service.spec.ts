@@ -4,7 +4,6 @@ import {HotelService} from './hotel.service';
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import {HOTELS_DATA_STUB} from "./hotel.data.stub";
 import {of, throwError} from "rxjs";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 describe('HotelService', () => {
   let service: HotelService;
@@ -44,10 +43,5 @@ describe('HotelService', () => {
         }
       });
     expect(service.getHotels).toHaveBeenCalledTimes(1);
-  })
-
-  it('should get hotel data', () => {
-    jest.spyOn(service, 'getHotels');
-
   })
 });
